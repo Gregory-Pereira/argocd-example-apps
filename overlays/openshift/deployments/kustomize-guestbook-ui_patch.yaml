@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: guestbook-ui
+spec:
+  template:
+    spec:
+      containers:
+      - name: guestbook-ui
+        ports:
+          - $patch: replace
+          - containerPort: 8080
+        volumeMounts:
+          - mountPath: /etc/apache2/ports.conf
+            name: apache-config
+            subPath: ports.conf
+      volumes:
+        - name: apache-config
+          configMap:
+            name: apache-config

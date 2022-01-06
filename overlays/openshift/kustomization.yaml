@@ -1,0 +1,14 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+resources:
+  - ../../kustomize-guestbook/
+
+configMapGenerator:
+  - name: apache-config
+    files:
+      - ports.conf
+
+patches:
+  - path: deployments/kustomize-guestbook-ui_patch.yaml
+  - path: services/kustomize-guestbook-ui_patch.yaml
