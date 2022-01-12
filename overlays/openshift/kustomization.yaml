@@ -3,7 +3,11 @@ kind: Kustomization
 
 resources:
   - ../../kustomize-guestbook/
-
+  
+ configMapGenerator:
+  - name: apache-config
+    files:
+      - ports.conf
 
 patches:
   - path: deployments/kustomize-guestbook-ui_patch.yaml
