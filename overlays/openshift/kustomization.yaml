@@ -3,6 +3,7 @@ kind: Kustomization
 
 resources:
   - ../../kustomize-guestbook/
+  - ./test.txt
 
 configMapGenerator:
   - name: apache-config
